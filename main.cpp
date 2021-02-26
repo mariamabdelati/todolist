@@ -52,11 +52,11 @@ int argv stores the values in an array which can let us print it if we want to
                 getline(cin, view);
 
                 transform(view.begin(), view.end(), view.begin(), ::tolower);
-                if (choice == "1" || choice == "1) to complete" || choice == "to complete" || choice == "1)")
+                if (view == "1" || view == "1) to complete" || view == "to complete" || view == "1)")
                 {
 				//function from class runs to view the tasks that are not done yet
                     task.view_tocomplete();
-                } else if (choice == "2" || choice == "2) completed" || choice == "completed" || choice == "2)") {
+                } else if (view == "2" || view == "2) completed" || view == "completed" || view == "2)") {
 				//function from class runs to view the tasks that are done
                     task.view_completed();
 		}else{
