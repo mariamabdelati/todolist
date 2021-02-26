@@ -14,6 +14,8 @@ int argv stores the values in an array which can let us print it if we want to
 {
     //this creates and object of type FileHandler
     FileHandler tasklist;
+    Task task;
+	
 
     while (true)
     {
@@ -35,10 +37,10 @@ int argv stores the values in an array which can let us print it if we want to
             if (choice == "1" || choice == "1) add task" || choice == "add task" || choice == "1)")
 			{
 				//function from class runs to add the task
-                Add_Task();
+                task.Add_Task();
 	    } else if (choice == "2" || choice == "2) remove task" || choice == "remove task" || choice == "2)") {
 				//function from class runs to remove the task chosen
-                task.remove();
+                task.Remove_Task();
             } else if (choice == "3" || choice == "3) mark off task" || choice == "mark off task" || choice == "3)") {
 				//function from class runs to mark off completed tasks
                 task.markoff();
