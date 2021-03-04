@@ -1,0 +1,61 @@
+#include "list.h"
+
+List::List()
+{
+	linetext = "";
+	isdone = false;
+}
+
+List::List(string listline)
+{
+	int notdone_start = listline.find("not done");
+	/*
+	if found, the index for when the string starts
+	if not found, the index stored is -1
+	*/
+	int done_start = listline.find("done");
+	string strtext;
+
+	if (notdone_start > -1 && done_start == -1) // item has false
+	{
+		//this stores the line substring without the word done (subtract one to end right before the index of done)
+		strtext = listline.substr(0, notdone_start - 1);
+		offstream myfile;
+		myfile.open("filename.txt");
+		myfile << "not done.\n";
+		myfile.close();
+		return 0;
+		// to change the text in the file, worked on other tests.
+		isdone = false;
+
+	}
+	else if (done_start > -1 && notdone_start == -1) {
+		strtext = listline.substr(0, done_start - 1);
+		isdone = true;
+	}
+	else if (notdone_start == -1 && done_start == -1) { // identifies that this is a user input
+		strtext = listline;
+		isdone = false;
+	}
+	linetext = strtext;
+  
+  
+  // should edit the file for only one word
+  
+  
+ //this is how to write one in general
+// #include <iostream>
+// #include <fstream>
+// using namespace std;
+
+// int main () {
+//   ofstream myfile;
+//   myfile.open ("example.txt");
+//   myfile << "Writing this to a file.\n";
+//   myfile.close();
+//   return 0;
+// }
+
+
+
+// also thanks mariam for half of your code
