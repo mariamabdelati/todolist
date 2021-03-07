@@ -1,4 +1,3 @@
-#  
 #include<iostream>
 #include<vector>
 #include<fstream>
@@ -6,23 +5,21 @@
 
 using namespace std;
 
-class Task {
+class FileHandler {
 private:
 protected:
 public:
-    Task() {
+    FileHandler() {
         //constructor
     }
-    ~Task() {
+    ~FileHandler() {
         //destructor
     }
-    vector<string> list;
 
-    //void start_todo();
-    void add();
-    void remove();
-    void view_tocomplete();
-    int get_count();
-    void view_completed();
-    void unmark();
+    vector<string> list;
+    string name;
+
+    void write(vector<string> list); //passing the list from the other class 
+    void read_file();
 };
+
