@@ -1,0 +1,41 @@
+ 
+#include "list.h"
+
+List::List()
+{
+	linetext = "";
+	isdone = false;
+}
+
+List::List(string listline)
+{
+	int notdone_start = listline.find("not done");
+	
+	int done_start = listline.find("done");
+	string strtext;
+
+	if (notdone_start > -1 && done_start == -1) // item has false
+	{
+		
+		strtext = listline.substr(0, notdone_start - 1);
+		ofstream myfile;
+		myfile.open("tasks.txt");
+		myfile << " done.\n";
+		myfile.close();
+		return 0;
+		// to change the text in the file, worked on other tests.
+		isdone = false;
+
+	}
+	else if (done_start > -1 && notdone_start == -1) {
+		strtext = listline.substr(0, done_start - 1);
+		isdone = true;
+	}
+	else if (notdone_start == -1 && done_start == -1) { // identifies that this is a user input
+		strtext = listline;
+		isdone = false;
+	}
+	linetext = strtext;
+
+
+
