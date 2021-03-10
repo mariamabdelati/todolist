@@ -18,6 +18,7 @@ public:
 
     string text();
     void done();
+    void notdone();
     bool is_done();
 
     static bool operator==(Item&);
