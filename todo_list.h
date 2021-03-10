@@ -28,6 +28,7 @@ public:
     void add();
     void clear();
     void check();
+    void uncheck();
 
     int get_count();
 
