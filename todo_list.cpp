@@ -55,6 +55,39 @@ void TodoList::display()
     //list[i].text returns the text from that line as defined in the item class
 }
 
+void TodoList::display_incomplete()
+{
+    cout << "Your todo list: " << endl << endl;
+
+    const int W = 40; //read-only cannot be modified by program
+    cout << "   " << setw(W) << left << "TASK" << "DONE" << endl; //nice looking to do list
+    cout << "   " << setw(W) << left << "----" << "----" << endl;
+
+    int n = 0;
+    for (int i = 0; i < list.size(); ++i)
+        if (!list[i].is_done())
+        {
+            cout << n + 1 << ") " << setw(W) << left << list[i].text() << (list[i].is_done() ? "Done" : "" ) << endl;
+            ++n;
+        }
+}
+
+void TodoList::display_complete()
+{
+    cout << "Your todo list: " << endl << endl;
+
+    const int W = 40; //read-only cannot be modified by program
+    cout << "   " << setw(W) << left << "TASK" << "DONE" << endl; //nice looking to do list
+    cout << "   " << setw(W) << left << "----" << "----" << endl;
+
+    int n = 0;
+    for (int i = 0; i < list.size(); ++i)
+        if (list[i].is_done())
+        {
+            cout << n + 1 << ") " << setw(W) << left << list[i].text() << (list[i].is_done() ? "Done" : "" ) << endl;
+            ++n;
+        }
+}
 
 void TodoList::create() //this creates a new list
 {
