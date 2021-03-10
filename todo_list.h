@@ -23,12 +23,16 @@ public:
 
     void read();
     void display();
+    
     void create();
     void save();
     void add();
     void clear();
     void check();
     void uncheck();
+    void display_incomplete();
+    void display_complete();
+
 
     int get_count();
 
