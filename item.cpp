@@ -52,6 +52,12 @@ void Item::done()
     _done = true;
 }
 
+//this function unmarks a task
+void Item::notdone()
+{
+    _done = false;
+}
+
 //this function identifies if a task is done
 bool Item::is_done()
 {
