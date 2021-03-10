@@ -51,13 +51,12 @@ void TaskManagement::display()
     cout << setfill(' ') << fixed;
 
     //for loop iterates over the list and prints each line
-    for (int i = 0; i < list.size(); ++i){
+    for (int i = 0; i < list.size(); ++i)
         cout << i + 1 << ") " << setw(width) << left << list[i].text() << (list[i].is_done() ? "Done" : "") << endl;
         //? is a conditional operator that returns X if condition true or Y if condition false [? X:Y]
         //list[i].text returns the text from that line as defined in the item class
         cout << setfill('-') << setw(width*1.5) << "-" << endl;
         cout << setfill(' ') << fixed;
-    }
 }
 
 void TaskManagement::create() //this creates a new list
