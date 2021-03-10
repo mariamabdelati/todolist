@@ -19,6 +19,7 @@ int main(int argc, char const *argv[])
             cout << "1) Add" << endl;
             cout << "2) Clear" << endl;
             cout << "3) Check" << endl;
+            cout << "4) Uncheck" << endl;
             cout << "Choice: ";
 
             string choice;
@@ -31,6 +32,8 @@ int main(int argc, char const *argv[])
                 tasks.clear();
             } else if (choice == "3") {
                 tasks.check();
+            } else if (choice == "4") {
+                tasks.uncheck();    
             } else {
                 break;
             }
