@@ -143,3 +143,23 @@ void TodoList::check()
 
     save();
 };
+
+void TodoList::uncheck()
+{
+    cout << "Enter number of task: ";
+
+    string choice;
+    getline(cin, choice); //takes input from user
+
+    if (choice.empty()) return;
+    for (char c : choice) if (isalpha(c)) return;
+    /*
+    colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
+    */
+
+    int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+    if (index > list.size()) return; //breaks if invalid number
+    list[index].notdone(); //takes the index and marks it as not done
+
+    save();
+};
