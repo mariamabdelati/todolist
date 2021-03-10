@@ -20,6 +20,8 @@ int main(int argc, char const *argv[])
             cout << "2) Clear" << endl;
             cout << "3) Check" << endl;
             cout << "4) Uncheck" << endl;
+            cout << "5) View Incomplete" << endl;
+            cout << "6) View Completed" << endl;
             cout << "Choice: ";
 
             string choice;
@@ -33,7 +35,11 @@ int main(int argc, char const *argv[])
             } else if (choice == "3") {
                 tasks.check();
             } else if (choice == "4") {
-                tasks.uncheck();    
+                tasks.uncheck();
+            } else if (choice == "5") {
+                tasks.display_incomplete();
+            } else if (choice == "6") {
+                tasks.display_complete();
             } else {
                 break;
             }
