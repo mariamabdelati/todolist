@@ -1,0 +1,25 @@
+void TodoList::edit()
+{
+    while (true)
+    {
+        cout << "Enter the number of the task you would like to edit: " << endl;
+
+        string choice;
+        getline(cin, choice);
+        if (choice == "") break; //this breaks loop if user presses enter
+
+        Item item(choice);
+        int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+        if (index > list.size()) return; //breaks if invalid number
+        
+        string changetask;
+        cout << "Enter what you would like to change the task to: " << endl;
+        cin >> changetask;
+
+        list[index] = changetask;
+
+        display();
+    }
+
+    save(); //saves the list
+}
