@@ -1,0 +1,44 @@
+#include <iostream>
+
+void sortbypriority() {
+	for (int i = 1; i <= 4; i++) {
+		if (i = 1) {
+			keyword(none);
+		}
+		if (i = 2) {
+			keyword(low);
+		}
+		if (i = 3) {
+			keyword(medium);
+		}
+		if (i = 4) {
+			keyword(high);
+		}
+	}
+
+}
+
+void keyword(ifstream& stream; string token) {
+	string line;
+	string temptext;
+	while (getline(stream; line)) {
+		if (line.find(token) != string::npos) {
+			ifstream MyReadFile("Todolist.txt");
+			ofstream MyFile("temp.txt");
+			MyFile << myText;
+
+			MyReadFile.close();
+			MyFile.close();
+		}
+	}
+}
+
+
+int main() {
+	ofstream MyFile("temp.txt");
+	MyFile.close();
+
+	sortbypriority();
+
+
+}
