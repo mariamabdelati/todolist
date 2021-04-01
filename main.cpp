@@ -39,7 +39,7 @@ int argv stores the values in an array which can let us print it if we want to
             if (choice == "1") {
                 tasks.add();
             } else if (choice == "2") {
-                //tasks.del();
+                tasks.del();
             } else if (choice == "3") {
                 tasks.edit();
             } else if (choice == "4") {
