@@ -41,13 +41,17 @@ int argv stores the values in an array which can let us print it if we want to
 
                 for (char c : choice)
                 {
-                    if (isalpha(c))
+                    if (isalpha(c) || isspace(c))
                     {
-                        throw;
+                        throw 0;
                     }
                 }
+                /*if (choice[0] == ' ' || choice[choice.length()-1] == ' ')
+                {
+                    throw 0;
+                }*/
                 if (stoi(choice) > 9 || stoi(choice) < 1)
-                    throw;
+                    throw 0;
 
                 if (choice == "1") {
                     tasks.add();
@@ -62,24 +66,47 @@ int argv stores the values in an array which can let us print it if we want to
                 } else if (choice == "6") {
                     tasks.reset();
                 } else if (choice == "7") {
+
+                    bool invalid = true;
+                    while (invalid)
+                    {
                     cout << "--------------" << endl << endl;
                     cout << "The Following Views are available \n";
                     cout << "--------------" << endl;
                     cout << "1) To Complete \n2) Completed \n" ;
                     cout << "--------------" << endl;
                     cout << "Choice: ";
-                    string view;
-                    getline(cin, view);
 
-                    if (view == "1")
-                    {
-                        tasks.view_incomplete();
-                    } else if (view == "2") {
-                        //function from class runs to view the tasks that are done
-                        tasks.view_complete();
-                    }else{
-                        cout << "this view is not supported \n";
+                        try {
+                            string view;
+                            getline(cin, view);
+
+                            if (view.empty())
+                            {
+                                break;
+                            }
+                            for (char c : view) {
+                                if (isalpha(c) || isspace(c)) {
+                                    throw 0;
+                                }
+                            }
+
+                            if (stoi(view) > 2 || stoi(view) < 1)
+                                throw 0;
+
+                            if (view == "1") {
+                                invalid = false;
+                                tasks.view_incomplete();
+                            } else if (view == "2") {
+                                //function from class runs to view the tasks that are done
+                                invalid = false;
+                                tasks.view_complete();
+                            }
+                        }catch (int exception) {
+                            cout << "Invalid Input. Please Enter the Number Corresponding to your Choice" << endl;
+                        }
                     }
+
                 } else if (choice == "8") {
                     tasks.set_priority();
                 } else if (choice == "9")
