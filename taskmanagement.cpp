@@ -56,7 +56,7 @@ void TaskManagement::create() //this creates a new list
         cout << count << ": ";
 
         getline(cin, task);
-        if (task == "") is_finished = true; //loop breaks if user presses enter
+        if (task.empty()) is_finished = true; //loop breaks if user presses enter
 
         Item item(task); //cast task as an item
         list.push_back(item); //add item to list vector
@@ -78,7 +78,7 @@ void TaskManagement::add()
 
         string task;
         getline(cin, task);
-        if (task == "") break; //this breaks loop if user presses enter
+        if (task.empty()) break; //this breaks loop if user presses enter
 
         Item item(task);
         list.push_back(item);
@@ -92,20 +92,33 @@ void TaskManagement::del()
     while (true)
     {
         cout << "Enter the number of the task you would like to remove: ";
+        try {
+            string choice;
+            getline(cin, choice);
 
-        string choice;
-        getline(cin, choice);
-        if (choice == "") break;
+            if (choice.empty()) break;
+            for (char c : choice) {
+                if (isalpha(c) || isspace(c)) {
+                    throw 0;
+                }
+            }
+            int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+            if (index > list.size() || index < 0) //breaks if invalid number
+                throw 0;
 
-        int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-        if (index > list.size()) return; //breaks if invalid number
+            auto it = list.begin();
+            advance(it,index);
+            list.erase(it);
+            //takes the index at which list begins and adds to it the index of specified task to erase it
+            FileManagement::write();
+            display();
+        } catch (int exception) {
+            cout << "Invalid Choice." << endl;
+        }
 
-        auto it = list.begin();
-        advance(it,index);
-        list.erase(it);
-        //takes the index at which list begins and adds to it the index of specified task to erase it
-        FileManagement::write();
-        display();
+        //if (index > list.size()) return; //breaks if invalid number
+
+
     }
 }
 
@@ -115,35 +128,50 @@ void TaskManagement::edit()
     {
         cout << "Enter the number of the task you would like to edit: ";
 
-        string choice;
-        getline(cin, choice);
-        if (choice == "") break; //this breaks loop if user presses enter
+        try {
+            string choice;
+            getline(cin, choice);
 
-        int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-        if (index > list.size()) return; //breaks if invalid number
-
-        string changetask;
-        cout << "Enter what you would like to change the task to: " << endl;
-        getline(cin, changetask);
-        if (changetask == "") break;
-
-        Item item(changetask);
-        //list[index] = changetask;
-
-        int x = 0;
-        for (auto &i : list) {
-            if (index == x) {
-                i = changetask;
-                break;
+            if (choice.empty()) break; //this breaks loop if user presses enter
+            for (char c : choice) {
+                if (isalpha(c) || isspace(c)) {
+                    throw 0;
+                }
             }
-            else
+
+            int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+            if (index > list.size() || index < 0) //breaks if invalid number
+                throw 0;
+
+            while (true)
             {
-                x++;
-            }
-        }
+                string changetask;
+                cout << "Enter what you would like to change the task to: " << endl;
+                getline(cin, changetask);
+                if (!changetask.empty())
+                {
+                    Item item(changetask);
+                    //list[index] = changetask;
+                    int x = 0;
+                    for (auto &i : list) {
+                        if (index == x) {
+                            i = changetask;
+                            break;
+                        }
+                        else
+                        {
+                            x++;
+                        }
+                    }
 
-        FileManagement::write(); //saves the list
-        display();
+                    FileManagement::write(); //saves the list
+                    display();
+                    break;
+                }
+            }
+        } catch (int exception) {
+            cout << "Invalid Choice." << endl;
+        }
     }
 
     //FileManagement::write();
@@ -193,32 +221,41 @@ void TaskManagement::check()
     while (true) {
         cout << "Enter number of task to mark off: ";
 
-        string choice;
-        getline(cin, choice); //takes input from user
+        try {
+            string choice;
+            getline(cin, choice); //takes input from user
 
-        if (choice.empty()) return;
-        for (char c : choice) if (isalpha(c)) return;
-        /*
-        colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
-        */
-
-        int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-        if (index > list.size()) return; //breaks if invalid number
-        //list[index].done(); //takes the index and marks it as done
-
-        int x = 0;
-        for (auto &i : list) {
-            if (index == x) {
-                i.done();
-                break;
+            if (choice.empty()) break;
+            for (char c : choice) {
+                /*
+                colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
+                */
+                if (isalpha(c) || isspace(c)) {
+                    throw 0;
+                }
             }
-            else
-            {
-                x++;
+            int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+            if (index > list.size() || index < 0) //breaks if invalid number
+
+            // list[index].done(); //takes the index and marks it as done
+                throw 0;
+
+            int x = 0;
+            for (auto &i : list) {
+                if (index == x) {
+                    i.done();
+                    break;
+                }
+                else
+                {
+                    x++;
+                }
             }
+            FileManagement::write();
+            display();
+        } catch (int exception) {
+            cout << "Invalid Choice." << endl;
         }
-        FileManagement::write();
-        display();
     }
 }
 
@@ -226,30 +263,40 @@ void TaskManagement::uncheck() {
     while (true) {
         cout << "Enter number of task to unmark: ";
 
-        string choice;
-        getline(cin, choice);
+        try {
+            string choice;
+            getline(cin, choice); //takes input from user
 
-        if (choice.empty()) return;
-        for (char c : choice) if (isalpha(c)) return;
-
-        int index = stoi(choice) - 1;
-        if (index > list.size()) return;
-       //list[index].notdone(); //takes the index and marks it as not done
-
-        int x = 0;
-        for (auto &i : list) {
-            if (index == x) {
-                i.notdone();
-                break;
+            if (choice.empty()) break;
+            for (char c : choice) {
+                /*
+                colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
+                */
+                if (isalpha(c) || isspace(c)) {
+                    throw 0;
+                }
             }
-            else
-            {
-                x++;
+            int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+            if (index > list.size() || index < 0) //breaks if invalid number
+                //list[index].notdone(); //takes the index and marks it as not done
+                throw 0;
+
+            int x = 0;
+            for (auto &i : list) {
+                if (index == x) {
+                    i.notdone();
+                    break;
+                }
+                else
+                {
+                    x++;
+                }
             }
+            FileManagement::write();
+            display();
+        } catch (int exception) {
+            cout << "Invalid Choice." << endl;
         }
-        FileManagement::write();
-        display();
-
     }
 }
 
@@ -259,51 +306,72 @@ void TaskManagement::set_priority()
     {
         cout << "Enter the number of the task you would like to set the priority for: ";
 
+        try {
+            string choice;
+            getline(cin, choice); //takes input from user
 
-        string choice;
-        getline(cin, choice);
-
-        if (choice == "") break;
-        for (char c : choice) if (isalpha(c)) return;
-
-
-        int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-        if (index > list.size()) return;
-
-        cout << "Enter priority (low, medium, high, none): ";
-        string priority;
-        getline(cin, priority);
-
-        int x = 0;
-        for (auto &i : list)
-        {
-            if (priority == "low" && index == x) {
-                i.lowpriority();
-                break;
-            } else if (priority == "medium" && index == x) {
-                i.mediumpriority();
-                break;
-            } else if (priority == "high" && index == x) {
-                i.highpriority();
-                break;
-            } else if (priority == "none" && index == x) {
-                i.nopriority();
-                break;
-            } else if (index != x || index > x)
-            {
-                x++;
+            if (choice.empty()) break;
+            for (char c : choice) {
+                /*
+                colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
+                */
+                if (isalpha(c) || isspace(c)) {
+                    throw 0;
+                }
             }
-            else
-            {
-                return;
-            }
+            int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
+            if (index > list.size() || index < 0) //breaks if invalid number
+                //list[index].notdone(); //takes the index and marks it as not done
+                throw 0;
 
+            while (true)
+            {
+                cout << "Enter priority (low, medium, high, none): ";
+                try {
+                    string priority;
+                    getline(cin, priority);
+                    if (!priority.empty())
+                    {
+                        if (priority != "low" && priority != "medium" && priority != "high" && priority != "none")
+                            throw 0;
+
+                        for (char p : priority) {
+                            if (isdigit(p) || isspace(p)) {
+                                throw 0;
+                            }
+                        }
+
+                        int x = 0;
+                        for (auto &i : list)
+                        {
+                            if (priority == "low" && index == x) {
+                                i.lowpriority();
+                                break;
+                            } else if (priority == "medium" && index == x) {
+                                i.mediumpriority();
+                                break;
+                            } else if (priority == "high" && index == x) {
+                                i.highpriority();
+                                break;
+                            } else if (priority == "none" && index == x) {
+                                i.nopriority();
+                                break;
+                            } else if (index != x || index > x)
+                            {
+                                x++;
+                            }
+                        }
+                        FileManagement::write();
+                        display();
+                        break;
+                    }
+                }catch (int exception) {
+                    cout << "Invalid Priority." << endl;
+                }
+            }
+        } catch (int exception) {
+            cout << "Invalid Choice." << endl;
         }
-
-        FileManagement::write();
-        display();
     }
-
-
 }
 
