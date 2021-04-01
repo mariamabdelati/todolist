@@ -100,8 +100,9 @@ void TaskManagement::del()
         int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
         if (index > list.size()) return; //breaks if invalid number
 
-        
-        list.erase(list.begin() + index);
+        auto it = list.begin();
+        advance(it,index);
+        list.erase(it);
         //takes the index at which list begins and adds to it the index of specified task to erase it
         FileManagement::write();
         display();
