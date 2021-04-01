@@ -11,8 +11,8 @@ int argv stores the values in an array which can let us print it if we want to
 {
     //this creates an object of type TaskManagement
     TaskManagement tasks("todolist.txt");
-
-    while (true) {
+    bool exit = false;
+    while (!exit) {
         //this reads the items in the file
         tasks.read();
 
@@ -29,48 +29,66 @@ int argv stores the values in an array which can let us print it if we want to
             cout << "5) Unmark Task" << endl;
             cout << "6) Reset Current List" << endl;
             cout << "7) View Tasks" << endl;
-            cout << "8) Set Priority" << endl << endl;
+            cout << "8) Set Priority" << endl;
+            cout << "9) Quit Program" << endl << endl;
             cout << "--------------" << endl;
             cout << "Choice: ";
 
-            string choice;
-            getline(cin, choice);
+            try
+            {
+                string choice;
+                getline(cin, choice);
 
-            if (choice == "1") {
-                tasks.add();
-            } else if (choice == "2") {
-                tasks.del();
-            } else if (choice == "3") {
-                tasks.edit();
-            } else if (choice == "4") {
-                tasks.check();
-            } else if (choice == "5") {
-                tasks.uncheck();
-            } else if (choice == "6") {
-                tasks.reset();
-            } else if (choice == "7") {
-                cout << "--------------" << endl << endl;
-                cout << "The Following Views are available \n";
-                cout << "--------------" << endl;
-                cout << "1) To Complete \n2) Completed \n" ;
-                cout << "--------------" << endl;
-                cout << "Choice: ";
-                string view;
-                getline(cin, view);
-
-                if (view == "1")
+                for (char c : choice)
                 {
-                    tasks.view_incomplete();
-                } else if (view == "2") {
-                    //function from class runs to view the tasks that are done
-                    tasks.view_complete();
-                }else{
-                    cout << "this view is not supported \n";
+                    if (isalpha(c))
+                    {
+                        throw;
+                    }
                 }
-            } else if (choice == "8") {
-                tasks.set_priority();
-            } else {
-                break;
+                if (stoi(choice) > 9 || stoi(choice) < 1)
+                    throw;
+
+                if (choice == "1") {
+                    tasks.add();
+                } else if (choice == "2") {
+                    tasks.del();
+                } else if (choice == "3") {
+                    tasks.edit();
+                } else if (choice == "4") {
+                    tasks.check();
+                } else if (choice == "5") {
+                    tasks.uncheck();
+                } else if (choice == "6") {
+                    tasks.reset();
+                } else if (choice == "7") {
+                    cout << "--------------" << endl << endl;
+                    cout << "The Following Views are available \n";
+                    cout << "--------------" << endl;
+                    cout << "1) To Complete \n2) Completed \n" ;
+                    cout << "--------------" << endl;
+                    cout << "Choice: ";
+                    string view;
+                    getline(cin, view);
+
+                    if (view == "1")
+                    {
+                        tasks.view_incomplete();
+                    } else if (view == "2") {
+                        //function from class runs to view the tasks that are done
+                        tasks.view_complete();
+                    }else{
+                        cout << "this view is not supported \n";
+                    }
+                } else if (choice == "8") {
+                    tasks.set_priority();
+                } else if (choice == "9")
+                {
+                    exit = true;
+                }
+            }
+            catch (int exception) {
+                cout << "Invalid Input. Please Enter the Number Corresponding to your Choice" << endl;
             }
 
         } else {
