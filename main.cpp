@@ -52,6 +52,9 @@ int argv stores the values in an array which can let us print it if we want to
                     } else if (isspace(c))
                     {
                         throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                    } else if (ispunct(c))
+                    {
+                        throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                     }
                 }
                 /*if (choice[0] == ' ' || choice[choice.length()-1] == ' ')
@@ -100,6 +103,9 @@ int argv stores the values in an array which can let us print it if we want to
                                 } else if (isspace(c))
                                 {
                                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                                } else if (ispunct(c))
+                                {
+                                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                                 }
                             }
 
