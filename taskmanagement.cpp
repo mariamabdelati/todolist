@@ -104,6 +104,9 @@ void TaskManagement::del()
                 } else if (isspace(c))
                 {
                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                } else if (ispunct(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
@@ -144,6 +147,9 @@ void TaskManagement::edit()
                 } else if (isspace(c))
                 {
                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                } else if (ispunct(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                 }
             }
 
@@ -244,6 +250,9 @@ void TaskManagement::check()
                 } else if (isspace(c))
                 {
                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                } else if (ispunct(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
@@ -290,6 +299,9 @@ void TaskManagement::uncheck() {
                 } else if (isspace(c))
                 {
                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                } else if (ispunct(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
@@ -337,6 +349,9 @@ void TaskManagement::set_priority()
                 } else if (isspace(c))
                 {
                     throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                } else if (ispunct(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
@@ -363,6 +378,9 @@ void TaskManagement::set_priority()
                             } else if (isspace(p))
                             {
                                 throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                            } else if (ispunct(p))
+                            {
+                                throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
                             }
                         }
 
@@ -399,4 +417,3 @@ void TaskManagement::set_priority()
         }
     }
 }
-
