@@ -98,13 +98,17 @@ void TaskManagement::del()
 
             if (choice.empty()) break;
             for (char c : choice) {
-                if (isalpha(c) || isspace(c)) {
-                    throw 0;
+                if (isalpha(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                } else if (isspace(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-            if (index > list.size() || index < 0) //breaks if invalid number
-                throw 0;
+            if (index >= list.size() || index < 0) //breaks if invalid number
+                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
             auto it = list.begin();
             advance(it,index);
@@ -112,8 +116,8 @@ void TaskManagement::del()
             //takes the index at which list begins and adds to it the index of specified task to erase it
             FileManagement::write();
             display();
-        } catch (int exception) {
-            cout << "Invalid Choice." << endl;
+        } catch (invalid_argument& e) {
+            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
         }
 
         //if (index > list.size()) return; //breaks if invalid number
@@ -134,14 +138,18 @@ void TaskManagement::edit()
 
             if (choice.empty()) break; //this breaks loop if user presses enter
             for (char c : choice) {
-                if (isalpha(c) || isspace(c)) {
-                    throw 0;
+                if (isalpha(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                } else if (isspace(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                 }
             }
 
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-            if (index > list.size() || index < 0) //breaks if invalid number
-                throw 0;
+            if (index >= list.size() || index < 0) //breaks if invalid number
+                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
             while (true)
             {
@@ -169,8 +177,8 @@ void TaskManagement::edit()
                     break;
                 }
             }
-        } catch (int exception) {
-            cout << "Invalid Choice." << endl;
+        } catch (invalid_argument& e) {
+            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
         }
     }
 
@@ -230,15 +238,19 @@ void TaskManagement::check()
                 /*
                 colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
                 */
-                if (isalpha(c) || isspace(c)) {
-                    throw 0;
+                if (isalpha(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                } else if (isspace(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-            if (index > list.size() || index < 0) //breaks if invalid number
+            if (index >= list.size() || index < 0) //breaks if invalid number
 
             // list[index].done(); //takes the index and marks it as done
-                throw 0;
+                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
             int x = 0;
             for (auto &i : list) {
@@ -253,8 +265,8 @@ void TaskManagement::check()
             }
             FileManagement::write();
             display();
-        } catch (int exception) {
-            cout << "Invalid Choice." << endl;
+        } catch (invalid_argument& e) {
+            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
         }
     }
 }
@@ -272,14 +284,18 @@ void TaskManagement::uncheck() {
                 /*
                 colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
                 */
-                if (isalpha(c) || isspace(c)) {
-                    throw 0;
+                if (isalpha(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                } else if (isspace(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-            if (index > list.size() || index < 0) //breaks if invalid number
+            if (index >= list.size() || index < 0) //breaks if invalid number
                 //list[index].notdone(); //takes the index and marks it as not done
-                throw 0;
+                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
             int x = 0;
             for (auto &i : list) {
@@ -294,8 +310,8 @@ void TaskManagement::uncheck() {
             }
             FileManagement::write();
             display();
-        } catch (int exception) {
-            cout << "Invalid Choice." << endl;
+        } catch (invalid_argument& e) {
+            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
         }
     }
 }
@@ -315,14 +331,18 @@ void TaskManagement::set_priority()
                 /*
                 colon syntax just iterates over the characters in choice and checks if they are alphabet, if they are it stops
                 */
-                if (isalpha(c) || isspace(c)) {
-                    throw 0;
+                if (isalpha(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                } else if (isspace(c))
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                 }
             }
             int index = stoi(choice) - 1; //converts the string to integer and subtracts 1 because our index starts at 0
-            if (index > list.size() || index < 0) //breaks if invalid number
+            if (index >= list.size() || index < 0) //breaks if invalid number
                 //list[index].notdone(); //takes the index and marks it as not done
-                throw 0;
+                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
             while (true)
             {
@@ -330,14 +350,19 @@ void TaskManagement::set_priority()
                 try {
                     string priority;
                     getline(cin, priority);
+                    priority = Item::str_tolower(priority);
                     if (!priority.empty())
                     {
-                        if (priority != "low" && priority != "medium" && priority != "high" && priority != "none")
-                            throw 0;
+                        if (priority == "low" || priority == "medium" || priority == "high" || priority == "none") {}
+                        else throw invalid_argument("Invalid Priority.");
 
                         for (char p : priority) {
-                            if (isdigit(p) || isspace(p)) {
-                                throw 0;
+                            if (isdigit(p))
+                            {
+                                throw invalid_argument("Invalid Choice, Choice cannot contain a Number.");
+                            } else if (isspace(p))
+                            {
+                                throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                             }
                         }
 
@@ -365,12 +390,12 @@ void TaskManagement::set_priority()
                         display();
                         break;
                     }
-                }catch (int exception) {
-                    cout << "Invalid Priority." << endl;
+                } catch (invalid_argument& e) {
+                    cerr << e.what() << "\nPlease Enter low, medium, high, none for the Priority\n" << endl;
                 }
             }
-        } catch (int exception) {
-            cout << "Invalid Choice." << endl;
+        } catch (invalid_argument& e) {
+            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
         }
     }
 }
