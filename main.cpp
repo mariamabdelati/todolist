@@ -39,11 +39,19 @@ int argv stores the values in an array which can let us print it if we want to
                 string choice;
                 getline(cin, choice);
 
+                if (choice.empty())
+                {
+                    throw invalid_argument("Invalid Choice, Choice cannot be Empty");
+                }
+
                 for (char c : choice)
                 {
-                    if (isalpha(c) || isspace(c))
+                    if (isalpha(c))
                     {
-                        throw 0;
+                        throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                    } else if (isspace(c))
+                    {
+                        throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                     }
                 }
                 /*if (choice[0] == ' ' || choice[choice.length()-1] == ' ')
@@ -51,7 +59,7 @@ int argv stores the values in an array which can let us print it if we want to
                     throw 0;
                 }*/
                 if (stoi(choice) > 9 || stoi(choice) < 1)
-                    throw 0;
+                    throw invalid_argument("Invalid Choice, Choice out of Range.");
 
                 if (choice == "1") {
                     tasks.add();
@@ -86,13 +94,17 @@ int argv stores the values in an array which can let us print it if we want to
                                 break;
                             }
                             for (char c : view) {
-                                if (isalpha(c) || isspace(c)) {
-                                    throw 0;
+                                if (isalpha(c))
+                                {
+                                    throw invalid_argument("Invalid Choice, Choice cannot contain an Alphabet Character.");
+                                } else if (isspace(c))
+                                {
+                                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
                                 }
                             }
 
                             if (stoi(view) > 2 || stoi(view) < 1)
-                                throw 0;
+                                throw invalid_argument("Invalid Choice, Choice out of Range.");
 
                             if (view == "1") {
                                 invalid = false;
@@ -102,8 +114,8 @@ int argv stores the values in an array which can let us print it if we want to
                                 invalid = false;
                                 tasks.view_complete();
                             }
-                        }catch (int exception) {
-                            cout << "Invalid Input. Please Enter the Number Corresponding to your Choice" << endl;
+                        }catch (invalid_argument& e) {
+                            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
                         }
                     }
 
@@ -114,8 +126,8 @@ int argv stores the values in an array which can let us print it if we want to
                     exit = true;
                 }
             }
-            catch (int exception) {
-                cout << "Invalid Input. Please Enter the Number Corresponding to your Choice" << endl;
+            catch (invalid_argument& e) {
+                cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
             }
 
         } else {
