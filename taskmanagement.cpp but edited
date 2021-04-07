@@ -272,36 +272,152 @@ void TaskManagement::set_priority() {
 
 };
 
-void TaskManagemennt::sortbypriority() {
-	for (int i = 1; i <= 4; i++) {
-		if (i = 1) {
-			keyword("none");
-		}
-		if (i = 2) {
-			keyword("low");
-		}
-		if (i = 3) {
-			keyword("medium");
-		}
-		if (i = 4) {
-			keyword("high");
-		}
-	}
+void TaskManagemennt::sortbylow() {
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '0')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '1')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '2')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '3')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
 
 }
 
-void TaskManagement::keyword(ifstream& stream; string token) {
-	string line;
-	string temptext;
-	while (getline(stream; line)) {
-		if (line.find(token) != string::npos) {
-			ifstream tasklist;
-            tasklist.open("lists.txt");;
-			ofstream MyFile("temp.txt");
-			MyFile << myText;
+void TaskManagement::sortbyhigh() {
+    cout << endl;
 
-			MyReadFile.close();
-			MyFile.close();
-		}
-	}
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '3')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+
+
+
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '2')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+
+
+
+
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '1')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+
+
+
+
+
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '0')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
 }
