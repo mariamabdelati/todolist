@@ -418,46 +418,6 @@ void TaskManagement::set_priority()
     }
 }
 
-void TaskManagement::priority_sort_by_low() {
-
-    cout << endl;
-    cout << "                             " << "SORT BY PRIORITY FROM LOW TO HIGH" << "    " << endl;
-
-    const int width = 40;
-    organize();
-
-    int n = 0;
-    for (auto &i : list)
-        if (i.priority() == "0" || i.priority().empty()) {
-            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
-            << setw(width) << (i.getpriority()) << endl;
-            ++n;
-        }
-
-    for (auto &i : list)
-        if (i.priority() == "1") {
-            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
-            << setw(width) << (i.getpriority()) << endl;
-            ++n;
-        }
-
-    for (auto &i : list)
-        if (i.priority() == "2") {
-            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
-            << setw(width) << (i.getpriority()) << endl;
-            ++n;
-        }
-
-    for (auto &i : list)
-        if (i.priority() == "3") {
-            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
-            << setw(width) << (i.getpriority()) << endl;
-            ++n;
-        }
-
-    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
-    cout << setfill(' ') << fixed;
-}
 
 bool TaskManagement::priority_check() {
     try {
@@ -474,6 +434,7 @@ bool TaskManagement::priority_check() {
         return false;
     }
 }
+
 void TaskManagement::priority_sort_by_high() {
     cout << endl;
     cout << "                             " << "SORT BY PRIORITY FROM HIGH TO LOW" << "    " << endl;
@@ -506,6 +467,46 @@ void TaskManagement::priority_sort_by_high() {
         if (i.priority() == "0" || i.priority().empty())
         {
             cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+}
+
+void TaskManagement::priority_sort_by_low() {
+    cout << endl;
+    cout << "                             " << "SORT BY PRIORITY FROM LOW TO HIGH" << "    " << endl;
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i.priority() == "0" || i.priority().empty()) {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
+            << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+
+    for (auto &i : list)
+        if (i.priority() == "1") {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
+            << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+
+    for (auto &i : list)
+        if (i.priority() == "2") {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
+            << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+
+    for (auto &i : list)
+        if (i.priority() == "3") {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "")
+            << setw(width) << (i.getpriority()) << endl;
             ++n;
         }
 
