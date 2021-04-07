@@ -24,17 +24,19 @@ public:;
     void add();
     void del();
     void edit();
+    
     void view_incomplete();
     void view_complete();
+    
     void check();
     void uncheck();
+    
     void set_priority();
-    void priority_sort_by_low();
-    void priority_sort_by_high();
     bool priority_check();
-
+    void priority_sort_by_high();
+    void priority_sort_by_low();
+    
     int get_count();
 
-    ;
 
 };
