@@ -4,83 +4,155 @@ using namespace std;
 
 using namespace std;
  
-void keyword(ifstream& stream, string token) {
-	 string line;
-    //For writing text file
-    //Creating ofstream & ifstream class object
-    ofstream out_file {"temp.txt"};
- 
-    if(ini_file && out_file){
- 
-        while(getline(ini_file,line)){
-            out_file << line << "\n";
+void sortbylow()
+{
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '0')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
         }
- 
-        cout << "Copy Finished \n";
- 
-    } else {
-        //Something went wrong
-        printf("Cannot read File");
-    }
- 
-    //Closing file
-    ini_file.close();
-    out_file.close();
- 
-    return 0;
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '1')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '2')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+    
+    
+    
+    
+    
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto &i : list)
+        if (i == '3')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width*2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
 }
 
-#include<fstream>
-#include<iostream>
-#include<cstdlib>
 
-using namespace std;
-
-int main()
+void sortbyhigh()
 {
-	ifstream fin;
-	fin.open("test.txt");
-	if(fin.fail())
-	{
-		cout << "Input file opening failed.\n";
-		exit(1);
-	}
-	string search;
-	cout << "Please enter a name: ";
-	cin  >> search;
-	bool isFound=0;
-	while(!fin.eof())
-	{
-		string temp = "";
-		getline(fin,temp);
-		for(int i=0;i<search.size();i++)
-		{
-			if(temp[i]==search[i])
-				isFound = 1;
-			else
-			{
-				isFound =0;
-				break;
-			}
-		}
+    cout << endl;
+    ;
 
-		if(isFound)
-		{
-			cout << "Password is: ";
-			for(int i = search.size()+1;i<temp.size();i++)
-				cout << temp[i];
+    const int width = 40;
+    organize();
 
-			break;
-		}
+    int n = 0;
+    for (auto& i : list)
+        if (i == '3')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
 
-	}
 
-	if(fin.eof()&&(!isFound))
-	{
-		cout << "Name not found!\n";
-	}
 
-	fin.close();
+    cout << endl;
+    
 
-	return 0;
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '2')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+
+
+
+
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '1')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
+
+
+
+
+
+    cout << endl;
+    
+
+    const int width = 40;
+    organize();
+
+    int n = 0;
+    for (auto& i : list)
+        if (i == '0')
+        {
+            cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+            ++n;
+        }
+    cout << setfill('-') << setw(width * 2.5) << "-" << endl;
+    cout << setfill(' ') << fixed;
 }
