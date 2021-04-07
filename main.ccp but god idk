@@ -68,7 +68,16 @@ int argv stores the values in an array which can let us print it if we want to
             } else if (choice == "7") {
                 tasks.set_priority();
             } else if (choice == "8"){
-                tasks.sortbypriority();
+                cout << "sort by high or low?";
+                string sorting;
+                getline (cin, sorting);
+                if (sorting == "high")
+                {
+                   task.sortbyhigh();
+                }else if (view == "low"){
+                   task.sortbylow();
+                }else{
+                   cout << "invalid choice \n";
             } else {
                 break;
             }
