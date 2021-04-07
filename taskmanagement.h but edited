@@ -28,8 +28,8 @@ public:
     void check();
     void uncheck();
     void set_priority();
-    void sortbypriority();
-    void keyword(ifstream& stream; string token);
+    void sortbylow();
+    void sortbyhigh();
 
     int get_count();
 
