@@ -30,7 +30,8 @@ int argv stores the values in an array which can let us print it if we want to
             cout << "6) Reset Current List" << endl;
             cout << "7) View Tasks" << endl;
             cout << "8) Set Priority" << endl;
-            cout << "9) Quit Program" << endl << endl;
+            cout << "9) Sort by Priority" << endl;
+            cout << "10) Quit Program" << endl << endl;
             cout << "--------------" << endl;
             cout << "Choice: ";
 
@@ -61,7 +62,7 @@ int argv stores the values in an array which can let us print it if we want to
                 {
                     throw 0;
                 }*/
-                if (stoi(choice) > 9 || stoi(choice) < 1)
+                if (stoi(choice) > 10 || stoi(choice) < 1)
                     throw invalid_argument("Invalid Choice, Choice out of Range.");
 
                 if (choice == "1") {
@@ -127,7 +128,57 @@ int argv stores the values in an array which can let us print it if we want to
 
                 } else if (choice == "8") {
                     tasks.set_priority();
-                } else if (choice == "9")
+                } else if (choice == "9") {
+                    bool invalid = true; // another bool value to identify invalid input and keep looping
+                    while (invalid) {
+                        if (!tasks.priority_check())
+                        {
+                            break;
+                        }
+                        cout << "--------------" << endl << endl;
+                        cout << "Sort by Priority\n";
+                        cout << "--------------" << endl;
+                        cout << "1) from High to Low \n2) from Low to High \n";
+                        cout << "--------------" << endl;
+                        cout << "Choice: ";
+
+                        try { //checks for invalid input
+                            string pr_sort;
+                            getline(cin, pr_sort);
+
+                            if (pr_sort.empty()) //the user can enter space to get out of the loop
+                            {
+                                break;
+                            }
+                            for (char c : pr_sort) {
+                                if (isalpha(c)) {
+                                    throw invalid_argument(
+                                            "Invalid Choice, Choice cannot contain an Alphabet Character.");
+                                } else if (isspace(c)) {
+                                    throw invalid_argument("Invalid Choice, Choice cannot contain Spaces.");
+                                } else if (ispunct(c)) {
+                                    throw invalid_argument("Invalid Choice, Choice cannot contain Punctuation.");
+                                }
+                            }
+
+                            if (stoi(pr_sort) > 2 || stoi(pr_sort) < 1)
+                                throw invalid_argument("Invalid Choice, Choice out of Range.");
+
+                            if (pr_sort == "1") {
+                                invalid = false;
+                                tasks.priority_sort_by_high();
+                            } else if (pr_sort == "2") {
+                                //function from class runs to view the tasks that are done
+                                invalid = false;
+                                tasks.priority_sort_by_low();
+                            }
+                        } catch (invalid_argument &e) { // catches the invalid argument
+                            cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
+                            //what() returns a pointer with content related to the exception
+                        }
+                    }
+                }
+                else if (choice == "10")
                 {
                     exit = true;
                 }
@@ -135,6 +186,7 @@ int argv stores the values in an array which can let us print it if we want to
             catch (invalid_argument& e) {
                 cerr << e.what() << "\nPlease Enter the Number Corresponding to your Choice\n" << endl;
             }
+            
 
         } else {
             //program automatically creates new list when first started or reset
