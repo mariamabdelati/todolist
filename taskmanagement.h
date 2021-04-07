@@ -29,6 +29,9 @@ public:;
     void check();
     void uncheck();
     void set_priority();
+    void priority_sort_by_low();
+    void priority_sort_by_high();
+    bool priority_check();
 
     int get_count();
 
