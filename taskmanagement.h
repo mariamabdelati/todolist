@@ -35,8 +35,9 @@ public:;
     bool priority_check();
     void priority_sort_by_high();
     void priority_sort_by_low();
+    bool restore_list();
     
     int get_count();
-
+    ::list<Item> list1;
 
 };
