@@ -1,7 +1,9 @@
 void TaskManagement::priority_sort_by_high() {
-    ::list<Item> list1;
-    for (const auto& item : list){
-        list1.push_back(item);
+    if (list1.empty())
+    {
+        for (const auto& item : list){
+            list1.push_back(item);
+        }
     }
     list.clear();
 
@@ -25,10 +27,13 @@ void TaskManagement::priority_sort_by_high() {
 }
 
 void TaskManagement::priority_sort_by_low() {
-    ::list<Item> list1;
-    for (const auto& item : list){
-        list1.push_back(item);
+    if (list1.empty())
+    {
+        for (const auto& item : list){
+            list1.push_back(item);
+        }
     }
+
     list.clear();
 
     for (auto i : list1)
@@ -48,4 +53,19 @@ void TaskManagement::priority_sort_by_low() {
             list.push_back(i);
         }
     FileManagement::write();
+}
+
+bool TaskManagement::restore_list()
+{
+    if (list1.empty())
+        return false;
+    else
+    {
+        list.clear();
+        for (const auto& item : list1){
+            list.push_back(item);
+        }
+        FileManagement::write();
+        return true;
+    }
 }
