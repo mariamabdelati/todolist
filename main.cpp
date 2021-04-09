@@ -14,7 +14,7 @@ int argv stores the values in an array which can let us print it if we want to
     bool exit = false;
     while (!exit) {
         //this reads the items in the file
-        tasks.selectData(tasks);
+        tasks.selectData();
 
         //this makes sure there are tasks to display in the txt
         if (tasks.get_count() > 0) {
@@ -149,7 +149,7 @@ int argv stores the values in an array which can let us print it if we want to
             //tasks.display();
 
             //tasks entered are saved into the file
-            //tasks.DatabaseManagement::insertData();
+            tasks.DatabaseManagement::insertData();
         }
     }
 
