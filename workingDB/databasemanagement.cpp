@@ -82,49 +82,8 @@ void DatabaseManagement::deleteData()
 }
 
 void DatabaseManagement::insertData() {
-    //connect();
-
-
-    /*string task = "hello true 1";
-
-
-    Item item(task);
-    list.push_back(item);
-    */
+    
     deleteData();
-
-
-    /*string sql3 = "DELETE FROM TODO";
-
-    sqlite3* db;
-    try
-    {
-        int exit = 0;
-        exit = sqlite3_open("todolist.db", &db);
-
-        char* messageError;
-        exit = sqlite3_exec(db, sql3.c_str(), NULL, 0, &messageError);
-
-        if (exit != SQLITE_OK)
-        {
-            cerr << "Error Delete" << endl;
-            sqlite3_free(messageError);
-        } else
-        {
-            cout << "Delete Successful" << endl;
-        }
-        sqlite3_close(db);
-    } catch (const exception & e)
-    {
-        cerr << e.what();
-    }*/
-
-        //connect();
-
-        /*string task = "hello true 1";
-
-        Item item(task);
-        list.push_back(item);*/
 
     int insert = 0;
     for (Item item : list)
@@ -193,116 +152,8 @@ void DatabaseManagement::selectData()
     sqlite3_close(db);
 }
 
-
-
-
-/*int DatabaseManagement::selectData(DatabaseManagement s)
-{
-    sqlite3* db;
-    int exit = sqlite3_open("todolist.db", &db);
-
-    string sql = "SELECT * FROM TODO";
-
-    *//*
-     * An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here
-     *//*
-    char* messageError;
-    exit = sqlite3_exec(db, sql.c_str(), DatabaseManagement::callback, &s, &messageError);
-
-    if (exit != SQLITE_OK)
-    {
-        cerr << "Error Select" << endl;
-        sqlite3_free(messageError);
-    } else
-    {
-        cout << "Records read Successfully" << endl;
-
-    }
-    return 0;
-}*/
-
-/*int DatabaseManagement::callback(void *NotUsed, int argc, char **argv, char **azColName) {
-    for (int i = 0; i < argc; i++) {
-        cout << azColName[i] << ": " << argv[i] << endl;
-    }
-    cout << endl;
-    return 0;
-}*/
-
-/*void DatabaseManagement::selectData(DatabaseManagement s) {
-    sqlite3_open(filename, &db);
-
-    string sql = "SELECT * FROM TODO;";
-
-    *//*
-     * An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here
-     *//*
-
-    int exit = sqlite3_exec(db, sql.c_str(), DatabaseManagement::callback, NULL, &ErrorMessage);
-
-    if (exit != SQLITE_OK) {
-        cerr << "Error Select" << endl;
-        sqlite3_free(ErrorMessage);
-    } else {
-        cout << "Records read Successfully" << endl;
-    }
-
-    sqlite3_close(db);
-}*/
-
-//this link on stackoverflow said to do that so i did
-// https://stackoverflow.com/questions/54848606/how-to-make-a-non-static-callback-in-c-for-sqlite
-/*
- * retreive contents of database used by selectData()
- * arc: holds the number of results,
- * azColName: eholds each column returned in array
- * argv: holds each value in array
- */
-/*int DatabaseManagement::callback(void* NotUsed, int argc, char** argv, char** azColName) {
-    return ((DatabaseManagement *)NotUsed)->callbackAux(argc, argv, azColName);
-}
-
-int DatabaseManagement::callbackAux(int argc, char ** argv, char ** azColName) {
-    int i;
-    string line;
-    //list.clear();
-    for (i = 1; i < argc; i++) {
-        // column name and value
-        line += argv[i];
-        line += " ";
-        //if (line.empty()) continue; //if it encounters an empty line skip iteration
-    }
-    Item item(line); //makes line an instance of class item (similar to type casting)
-    list.push_back(item); //adds to list vector
-    cout<<"item inserted"<<endl;
-    cout<<list.size();
-    return 0;
-}*/
-
-
-
-/*int DatabaseManagement::callback(void *s, int argc, char **argv, char **azColName) {
-    return ((DatabaseManagement *) s)->callbackAux(argc, argv, azColName);
-}
-
-int DatabaseManagement::callbackAux(int argc, char **argv, char **azColName) {
-    int i;
-    string line;
-    list.clear();
-    for (i = 1; i < argc; i++) {
-        // column name and value
-        line += argv[i];
-        line += " ";
-        if (line.empty()) continue; //if it encounters an empty line skip iteration
-        Item item(line); //makes line an instance of class item (similar to type casting)
-        list.push_back(item); //adds to list vector
-
-    }
-    return 0;
-}*/
-
-
 //this function works generally so if you wanna use that for edit then you can
+//needa get this to work with everything other than add and remove (for remove we might need another delete function so we can delete at a specific index)
 /*
 void DatabaseManagement::updateData(int s, const string& edit)
 {
