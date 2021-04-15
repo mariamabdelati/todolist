@@ -21,7 +21,7 @@ DatabaseManagement::DatabaseManagement(const char* filename)
     this is a pointer, arrow is used to dereference, helps assign the variable of same name to itself
     */
 }
-DatabaseManagement::~DatabaseManagement(){}
+DatabaseManagement::~DatabaseManagement()= default;
 
 /*int createDB(const char* s)
 {
@@ -60,11 +60,10 @@ void DatabaseManagement::deleteData()
     sqlite3* db;
     try
     {
-        int exit = 0;
-        exit = sqlite3_open("todolist.db", &db);
+        sqlite3_open("todolist.db", &db);
 
         char* messageError;
-        exit = sqlite3_exec(db, sql3.c_str(), NULL, 0, &messageError);
+        int exit = sqlite3_exec(db, sql3.c_str(), nullptr, nullptr, &messageError);
 
         if (exit != SQLITE_OK)
         {
@@ -82,7 +81,7 @@ void DatabaseManagement::deleteData()
 }
 
 void DatabaseManagement::insertData() {
-    
+
     deleteData();
 
     int insert = 0;
@@ -93,11 +92,10 @@ void DatabaseManagement::insertData() {
         sql2 = "INSERT INTO TODO (ID, TASK,STATUS,PRIORITY) VALUES (" + quotesql(to_string(insert)) + "," + quotesql(item.text()) + "," + quotesql((item.is_done() ? "true" : "false")) + "," + quotesql(item.priority()) + ");";
         try
         {
-            int exit = 0;
-            exit = sqlite3_open("todolist.db", &db);
+            sqlite3_open("todolist.db", &db);
 
             char* messageError;
-            exit = sqlite3_exec(db, sql2.c_str(), NULL, 0, &messageError);
+            int exit = sqlite3_exec(db, sql2.c_str(), nullptr, nullptr, &messageError);
 
             if (exit != SQLITE_OK)
             {
@@ -118,34 +116,35 @@ void DatabaseManagement::insertData() {
 void DatabaseManagement::selectData()
 {
     sqlite3 *db;
-    sqlite3_stmt * stmt;
+    sqlite3_stmt *stmt = nullptr;
 
 
     if (sqlite3_open("todolist.db", &db) == SQLITE_OK)
     {
-        sqlite3_prepare( db, "SELECT * from TODO;", -1, &stmt, NULL );//preparing the statement
+        sqlite3_prepare( db, "SELECT * from TODO;", -1, &stmt, nullptr );//preparing the statement
         sqlite3_step( stmt );//executing the statement
-        char * str = (char *) sqlite3_column_text( stmt, 0 ); //reading the 1st column of the result
+        //char * str = (char *) sqlite3_column_text( stmt, 0 ); //reading the 1st column of the result
     }
     else
     {
         cout << "Failed to open db\n";
     }
 
-    string line = "";
+
     list.clear();
     while( sqlite3_column_text( stmt, 0 ) )
     {
-        string line ="";
+        string line;
         for( int i = 1; i < 4; i++ )
         {
             line += std::string( (char *)sqlite3_column_text( stmt, i ));
-            line += " ";
+            if (i != 3)
+                line += " ";
         }
+        //cout <<line << endl;
         sqlite3_step( stmt );
         Item item(line);
-        list.push_back(line);
-
+        list.emplace_back(line);
     }
 
     sqlite3_finalize(stmt);
