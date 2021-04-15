@@ -96,7 +96,7 @@ void TaskManagement::add()
         //FileManagement::list.push_back(item);
     }
     //DatabaseManagement::deleteData();
-    //DatabaseManagement::insertData();
+    DatabaseManagement::insertData();
 
 
     //FileManagement::write(); //write the list into the file
