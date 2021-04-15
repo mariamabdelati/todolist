@@ -9,7 +9,7 @@ class Item
 public:
     Item();
     Item(string);
-    //~Item();
+    ~Item();
 
     string text();
     void done();
