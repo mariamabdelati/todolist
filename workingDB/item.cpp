@@ -39,10 +39,10 @@ Item::Item(string item)
     _priority = pr;
 }
 
-/*Item::~Item()
+Item::~Item()
 {
     // do nothing
-}*/
+}
 
 //this function will return the line text
 string Item::text()
