@@ -30,6 +30,7 @@ public:
     void set_priority();
     void sortbylow();
     void sortbyhigh();
+    void searchbycategory();
 
     int get_count();
 
