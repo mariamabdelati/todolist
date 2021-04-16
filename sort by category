@@ -1,0 +1,110 @@
+#temporary code, needs to be fixed when tamers code is finished maybe
+void sortbycategory()
+{
+    if (category == "other")
+    {
+        cout << endl;
+    
+
+        const int width = 40;
+        organize();
+
+        int n = 0;
+        for (auto &i : list)
+        {
+            a
+       
+            if (_category == '1')
+            {
+                cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+                ++n;
+            }
+       cout << setfill('-') << setw(width*2.5) << "-" << endl;
+       cout << setfill(' ') << fixed;
+        
+    
+    
+    
+       cout << endl;
+    }
+    
+    if (category == "home")
+    {
+        cout << endl;
+    
+
+        const int width = 40;
+        organize();
+
+        int n = 0;
+        for (auto &i : list)
+        {
+            a
+       
+            if (_category == '2')
+            {
+                cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+                ++n;
+            }
+       cout << setfill('-') << setw(width*2.5) << "-" << endl;
+       cout << setfill(' ') << fixed;
+        
+    
+    
+    
+       cout << endl;
+    }
+    
+    if (category == "work")
+    {
+        cout << endl;
+    
+
+        const int width = 40;
+        organize();
+
+        int n = 0;
+        for (auto &i : list)
+        {
+            a
+       
+            if (_category == '3')
+            {
+                cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+                ++n;
+            }
+       cout << setfill('-') << setw(width*2.5) << "-" << endl;
+       cout << setfill(' ') << fixed;
+        
+    
+    
+    
+       cout << endl;
+    }
+    if (category == "entertainment")
+    {
+        cout << endl;
+    
+
+        const int width = 40;
+        organize();
+
+        int n = 0;
+        for (auto &i : list)
+        {
+            a
+       
+            if (_category == '4')
+            {
+                cout << n + 1 << ") " << setw(width) << left << i.text() << setw(width) << (i.is_done() ? "Done" : "") << setw(width) << (i.getpriority()) << endl;
+                ++n;
+            }
+       cout << setfill('-') << setw(width*2.5) << "-" << endl;
+       cout << setfill(' ') << fixed;
+        
+    
+    
+    
+       cout << endl;
+    }
+}
