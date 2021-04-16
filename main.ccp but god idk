@@ -30,6 +30,7 @@ int argv stores the values in an array which can let us print it if we want to
             cout << "6) View Tasks" << endl;
             cout << "7) Set Priority" << endl << endl;
             cout << "8) Sort By Priority" << endl << endl;
+            cout << "9) Search By Category" << endl << endl;
             cout << "--------------" << endl;
             cout << "Choice: ";
 
@@ -78,6 +79,12 @@ int argv stores the values in an array which can let us print it if we want to
                    task.sortbylow();
                 }else{
                    cout << "invalid choice \n";
+            } else if (choice == "9"){
+                cout << "Would you like to show entertainment, work, home, or other"
+                string category
+                getline (cin, category)
+                task.searchbycategory
+                   
             } else {
                 break;
             }
@@ -94,8 +101,10 @@ int argv stores the values in an array which can let us print it if we want to
 
             //tasks entered are saved into the file
             tasks.write();
-        }
+        } 
+             
     }
+   
 
     return 0;
 }
