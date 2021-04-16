@@ -1,5 +1,5 @@
 #temporary code, needs to be fixed when tamers code is finished maybe
-void sortbycategory()
+void searchbycategory()
 {
     if (category == "other")
     {
