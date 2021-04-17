@@ -40,8 +40,8 @@ Item::Item(const string& item)
         str = item.substr(0, starttrue - 1);
         _done = true;
         pr = item.substr(starttrue + 5, starttrue + 6);
-        dt = item.substr(startfalse + 8, startfalse + 17);
-        ct = item.substr(startfalse + 19, startfalse + 22);
+        dt = item.substr(starttrue + 8, starttrue + 17);
+        ct = item.substr(starttrue + 19, starttrue + 22);
     }
     else if (startfalse == -1 && starttrue == -1) { // item is user input (no true or false)
         str = item;
