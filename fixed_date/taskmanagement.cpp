@@ -547,7 +547,7 @@ void TaskManagement::set_date()
                     //DatabaseManagement::updateData(i, 3, stoi(choice));
                     break;
                 } else {
-                    x++;
+                    y++;
                 }
             }
 
@@ -571,7 +571,7 @@ void TaskManagement::set_date()
                     //DatabaseManagement::updateData(i, 3, stoi(choice));
                     break;
                 } else {
-                    x++;
+                    z++;
                 }
             }
 
