@@ -222,15 +222,18 @@ void TaskManagement::view_incomplete()
     cout << setfill('-') << setw(width*5) << "-" << endl;
     cout << setfill(' ') << fixed;
 
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 }
 
@@ -252,15 +255,18 @@ void TaskManagement::view_complete()
     cout << setfill('-') << setw(width*5) << "-" << endl;
     cout << setfill(' ') << fixed;
 
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 
 }
@@ -471,15 +477,18 @@ void TaskManagement::priority_sort_by_high() {
     //list.clear();
     DatabaseManagement::selectPriority(1);
     display();
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 }
 
@@ -513,15 +522,18 @@ void TaskManagement::priority_sort_by_low() {
 
     DatabaseManagement::selectPriority(2);
     display();
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 }
 
@@ -728,15 +740,18 @@ void TaskManagement::date_sort_desc()
 {
     DatabaseManagement::selectDate(1);
     display();
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 }
 
@@ -744,15 +759,18 @@ void TaskManagement::date_sort_asc()
 {
     DatabaseManagement::selectDate(2);
     display();
-    cout << "Press Enter to continue";
-    try {
-        string enter;
-        getline(cin, enter);
-        if (!enter.empty()) {
-            throw invalid_argument("Invalid.");
+    while (true) {
+        cout << "Press Enter to continue ";
+        try {
+            string enter;
+            getline(cin, enter);
+            if (!enter.empty()) {
+                throw invalid_argument("Invalid.");
+            } else break;
+        } catch (invalid_argument &e) {
+            cerr << e.what() << "\nPlease Press Enter\n" << endl;
         }
-    } catch (invalid_argument& e) {
-        cerr << e.what() << "\nPlease Press Enter\n" << endl;
+
     }
 
 }
