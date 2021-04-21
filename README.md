@@ -9,9 +9,8 @@ has functions to define information about a specific task, whether it is done or
 contains items and has various manipulation methods such as displaying list, adding, removing, editing, setting priority etc.
 
 
-## FileManagement
-contains functions to open, write, read and delete file 
-
+## DatabaseManagement
+contains functions to select, insert, and delete from the database using SQL
 
 
 # Libraries
@@ -21,11 +20,9 @@ contains functions to open, write, read and delete file
   to display menu and list in an organized manner
 ## string
   formatting user input
-## vector
+## STL list
   to add/remove information about a task into the list and display tasks
-## fstream
-  creation and manipulation of file (todolist.txt)
+## sqlite3
+  manipulation of database and saving tasks (todolist.db)
 ## cctype
   to transform and check type of specific characters
-## cstdio
-  used to remove todolist.txt file
