@@ -1,5 +1,5 @@
 # todolist
-TODO list C++ application that has basic features to add, remove, edit, view tasks, and some extra features like setting priority 
+TODO list C++ application that has basic features to add, remove, edit, view tasks, and some extra features like setting priority, date, and category
 
 # Classes
 ## Item
