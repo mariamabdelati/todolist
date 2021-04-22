@@ -232,8 +232,6 @@ void DatabaseManagement::selectDate(int x)
     sqlite3_close(db);
 }
 
-
-//this function works generally so if you wanna use that for edit then you can
 /*void DatabaseManagement::updateData(Item item, int taskmanage, int id)
 {
     int exit = sqlite3_open(filename, &db);
